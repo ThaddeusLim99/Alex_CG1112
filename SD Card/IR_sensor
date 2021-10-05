@@ -1,0 +1,40 @@
+
+//int out =13;
+//int sensorValue = 0; // value read from the serial
+//change to condition
+
+#define SensorValue ((PINC) & (0b00000001)) //reading PORT C pin 0 value
+
+void setup() {
+//  Serial.begin(9600);
+//  pinMode(out, OUTPUT);
+PORTC &= 0b11111110; //setting int analogInPin = A0;
+DDRC &= 0b11111110; //setting PC1 as output  
+}
+
+void loop() {
+  // read the analog in value:
+  // can change analogRead to SensorValue
+  //sensorValue = analogRead(analogInPin);
+
+  if (SensorValue < 300) {
+    Serial.println("object");
+  }
+  else {
+    Serial.println("no object");  }
+//  Serial.print("sensor = " );
+//  Serial.println(SensorValue);
+
+  delay(200);
+  
+//  if(SensorValue>700)
+//  {
+//    digitalWrite(out,1);
+//    delay(100);
+//  }
+//  else
+//  {
+//    digitalWrite(out,0);
+//  }
+  
+}
